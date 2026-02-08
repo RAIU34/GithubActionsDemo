@@ -1,7 +1,10 @@
 name : compile and deploy
 
 on:
-  workflow_dispatch:
+  push:
+    branches:
+      - "feature/**"
+      - "bugfix/**"
 env:
   DOTNET_VERSION: 8.0.x
 
