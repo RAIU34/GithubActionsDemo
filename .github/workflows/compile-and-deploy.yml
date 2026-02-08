@@ -2,6 +2,10 @@ name : compile and deploy
 
 on:
   push:
+  # Also by any tag
+    tags:
+      - '*'
+      
     branches:
       - "feature/**"
       - "bugfix/**"
@@ -47,9 +51,11 @@ jobs:
           name: build
 
       - name: Zip the contents
+        if: startsWith(github.ref, 'refs/tags/')
         run: zip -r myapp.zip ./myapp   
     
       - name: Make a release in the release folder in the repo
+        if: startsWith(github.ref, 'refs/tags/')
         uses: softprops/action-gh-release@v2.5.0
         with:
           files: ./myapp.zip
