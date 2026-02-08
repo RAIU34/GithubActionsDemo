@@ -17,6 +17,8 @@ env:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions: 
+      contents: write
     steps:
       - name: Getting the code
         uses: actions/checkout@v6.0.2
@@ -44,7 +46,15 @@ jobs:
           path: ./myapp
           name: build
 
-      
+      - name: Zip the contents
+        run: zip -r myapp.zip ./myapp   
+    
+      - name: Make a release in the release folder in the repo
+        uses: softprops/action-gh-release@v2.5.0
+        with:
+          files: ./myapp.zip
+          body: "This is the release"
+          tag_name: ${{github.ref.name}}
           
       
    
