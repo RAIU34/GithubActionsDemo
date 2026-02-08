@@ -54,7 +54,7 @@ jobs:
         with:
           files: ./myapp.zip
           body: "This is the release"
-          tag_name: ${{github.ref.name}}
+          tag_name: ${{github.ref_name}}
           
       
    
