@@ -31,11 +31,11 @@ jobs:
       - name: Compile
         run: dotnet build --no-restore
 
-  test:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: test the application in paralel
+  # test:
+  #   needs: build
+  #   runs-on: ubuntu-latest
+  #   steps:
+      - name: test the application in sequential
         run: dotnet test --no-build
         
     
