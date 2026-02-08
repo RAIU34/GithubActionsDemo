@@ -1,0 +1,29 @@
+name : compile and deploy
+
+on:
+  workflow_dispatch:
+env:
+  DOTNET_VERSION: 8.0.x
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Getting the code
+        uses: actions/checkout@v6.0.2
+        
+      - name: Setup .NET Core SDK
+        uses: actions/setup-dotnet@v5.1.0
+        with:
+          dotnet-version: ${{env.DOTNET_VERSION}}
+      # Just separate this 2 steps so if it fails we know where
+      - name: Getting the dependencies
+        run: dotnet restore
+
+      - name: Compile
+        run: dotnet build --no-restore
+
+      
+          
+      
+   
