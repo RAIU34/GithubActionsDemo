@@ -5,6 +5,11 @@ on:
     branches:
       - "feature/**"
       - "bugfix/**"
+      - main
+    paths:
+      - ".github/workflows/**"
+      - "GithubActionsDemoApp/**"
+      - "Tests/**"
 env:
   DOTNET_VERSION: 8.0.x
 
